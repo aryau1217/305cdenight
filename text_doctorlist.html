@@ -1,0 +1,315 @@
+<html>
+<!-- <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head> -->
+    <head>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>doctorlist</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+  </head>
+<style>
+  p.dotted {border-style: dotted;}
+  </style>
+<script>
+$(document).ready(function()
+{   
+    mylogin=localStorage.getItem("mylogin");
+	
+	if(mylogin==""){
+	alert("Please login first");
+	return;
+	}
+  
+  $("button").click(function()
+	{
+		
+		if(this.id=="fav1"){
+		  favtext=$("#fav1text").html();
+		}else if(this.id=="fav2"){
+		  favtext=$("#fav2text").html();
+		}
+		
+	
+        
+          var mydata="user="+mylogin+"&fav="+favtext;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/addfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   $("#readfav").click(function()
+	{
+		alert("Reading....");
+		
+        
+          var mydata="user="+mylogin;
+        
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/readfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+				  alert(stringObj.length);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].user + "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].favourite;
+					  document.getElementsByClassName("removelink")[i].innerHTML = stringObj[i]._id;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   
+   $(".removelink").click(function(e)
+	{
+		
+		alert($(this).closest('tr').children('td.removelink').text());
+		
+		removeid=$(this).closest('tr').children('td.removelink').text();
+		
+	
+        
+          var mydata="removeid="+removeid;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/removefavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+});
+</script>
+<body style="background-color:HoneyDew;">
+     
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">NO DRUGS.COM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/socialnetwork">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/doctorlist">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+<!--               <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/Login">Signup/Login</a>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+     <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+<br>
+<br>
+<br>
+<br>
+          <h1 class="my-4">Doctor List</h1>
+          <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i>Go</button>
+          <div class="list-group">
+            <br><a href="#" class="list-group-item active">Understanding Drug Use</a>
+            <a href="#" class="list-group-item">Addiction</a>
+            <a href="#" class="list-group-item">Affecting Brain</a>
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+<br>
+<br>
+<br>
+<br>
+          <div class="card mt-4">
+            <div class="card-body">
+              <h3 class="card-title">Find a doctor to help you</h3>
+              <h4>We have two famous doctors who helped a log of drugs abuse.</h4>
+<!--                 <a href="/favlistpage">favourite list</a> <a href="/logout">log out</a> -->
+  	<br>
+  	<img src="doctor001.jpg" alt="doctor001" width="400" height="300">
+  	<div id="fav1text"><h3>Doctor Lee</h3></div><button id="empty" class="button">
+    	CLICK To ADD 
+  	</button>
+	
+	<br>
+  <br>
+  	<img src="doctor002.jpg" alt="doctor001" width="380" height="300">
+	<div id="fav2text"><h3>
+     Doctor Chen</h3></div><button id="empty" class="button">
+    	CLICK To ADD 
+  	</button>
+    <br><br><br>
+
+
+    <font color="red"><b><h3>
+      <p class="dotted">Sign Up or Login first to contact doctor</p></h3></b></font>
+
+<!--   <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+		   <td class = "removelink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+		   <td class = "tablink"></td>
+           <td class = "removelink"></td>
+          </tr>
+  </table>  -->
+<img src="drug001.jpg" alt="drug001" width="300" height="150"><img src="dead001.jpg" alt="dead001" width="300" height="150">
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              <h3>
+              Drugs addict experience sharing</h3>
+            </div>
+            <div class="card-body">
+              <p><h3>
+              Why do drug-addicted persons keep using drugs?</h3><br>Nearly all addicted individuals believe at the outset that they can stop using drugs on their own, and most try to stop without treatment. Although some people are successful, many attempts result in failure to achieve long-term abstinence. Research has shown that long-term drug abuse results in changes in the brain that persist long after a person stops using drugs. These drug-induced changes in brain function can have many behavioral consequences, including an inability to exert control over the impulse to use drugs despite adverse consequences—the defining characteristic of addiction.</p>
+              <small class="text-muted">Posted by Tommy Tsang on 3/2/17</small>
+              <hr>
+              <p><h3>
+            What helps people stay in treatment?</h3><br>Because successful outcomes often depend on a person’s staying in treatment long enough to reap its full benefits, strategies for keeping people in treatment are critical. Whether a patient stays in treatment depends on factors associated with both the individual and the program. Individual factors related to engagement and retention typically include motivation to change drug-using behavior; degree of support from family and friends; and, frequently,  pressure from the criminal justice system, child protection services, employers, or family. Within a treatment program, successful clinicians can establish a positive, therapeutic relationship with their patients. The clinician should ensure that a treatment plan is developed cooperatively with the person seeking treatment, that the plan is followed, and that treatment expectations are clearly understood. Medical, psychiatric, and social services should also be available.</p>
+              <small class="text-muted">Posted by Kelly Kwan on 25/12/16</small>
+              <hr>
+              <p><h3>
+          <h3>How can family and friends make a difference in the life of someone needing treatment?</h3>
+          <br>Family and friends can play critical roles in motivating individuals with drug problems to enter and stay in treatment. Family therapy can also be important, especially for adolescents. Involvement of a family member or significant other in an individual's treatment program can strengthen and extend treatment benefits.</p>
+              <small class="text-muted">Posted by Lee Ka Fai on 12/8/16</small>
+              <hr>
+              <a href="#" class="btn btn-success">Leave Your Experience Here</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+ 
+  </div>
+     <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+
+</html>

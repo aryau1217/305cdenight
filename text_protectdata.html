@@ -1,0 +1,308 @@
+<html>
+<!-- <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head> -->
+    <head>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>text_protectdata</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+  </head>
+<style>
+  p.dotted {border-style: dotted;}
+  
+  #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+  </style>
+<!-- <script>
+$(document).ready(function()
+{   
+    mylogin=localStorage.getItem("mylogin");
+	
+	if(mylogin==""){
+	alert("Please login first");
+	return;
+	}
+  
+  $("button").click(function()
+	{
+		
+		if(this.id=="fav1"){
+		  favtext=$("#fav1text").html();
+		}else if(this.id=="fav2"){
+		  favtext=$("#fav2text").html();
+		}
+		
+	
+        
+          var mydata="user="+mylogin+"&fav="+favtext;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/addfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   $("#readfav").click(function()
+	{
+		alert("Reading....");
+		
+        
+          var mydata="user="+mylogin;
+        
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/readfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+				  alert(stringObj.length);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].user + "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].favourite;
+					  document.getElementsByClassName("removelink")[i].innerHTML = stringObj[i]._id;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   
+   $(".removelink").click(function(e)
+	{
+		
+		alert($(this).closest('tr').children('td.removelink').text());
+		
+		removeid=$(this).closest('tr').children('td.removelink').text();
+		
+	
+        
+          var mydata="removeid="+removeid;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/removefavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+}); -->
+</script>
+<body style="background-color:LightCyan;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">NO DRUGS.COM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/favlistpage">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/socialnetwork">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/favlistpage">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/protectdata">Contact</a>
+            </li>
+<!--               <li class="nav-item">
+              <a class="nav-link" href="/Signup">Signup</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <br>
+          <br>
+          <h1 class="my-4">Contact</h1>
+          <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i>Go</button>
+          <div class="list-group">
+            <br><a href="#" class="list-group-item active">Understanding Drug Use</a>
+            <a href="#" class="list-group-item">Addiction</a>
+            <a href="#" class="list-group-item">Affecting Brain</a>
+            <img src="effectonbrain.jpg" alt="effectonbrain" width="250" height="250">
+            <img src="nodrugs.jpg" alt="nodrugs" width="250" height="250">
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+          <br>
+          <br>
+          <div class="card mt-4">
+            
+            <div class="card-body">
+              <img src="travel001.jpg" alt="travel001" width="250" height="150" align="right">
+              <br>
+              <h3 class="card-title">One of he best ways to make yourself stay away from drugs!</h3>
+              <h1>Visit or Contact Us</h1>
+<p>No Drugs World! <br>Address:　　127 HappyWood Rd, Morrisonal Big Hill, Wan Chai Bay, Hong Kong.<br>Tel:　　　　　+852 8123 4567 </p>
+
+ <h3>Our Location on Google Map</h3>
+    <div id="map"></div>
+    <script>
+function initMap() {
+  var hongkong = {lat: 22.276586, lng: 114.177502};
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 18, center: hongkong});
+  var marker = new google.maps.Marker({position: hongkong, map: map});
+}
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEzazAkm7iJssM3LPk3PsAj3_wsHmp6Zs&callback=initMap">
+    </script>
+              
+              <br>
+              <br><p>Travel broadens your perspectives, not only of the world but also of yourself. When traveling you may often find yourself in situations that you wouldn’t be in otherwise. You are faced with the reality of living outside your comfort zone, which, as uncomfortable as it is, gives you the opportunity to transform how you see things. Psychologists point out that people often have epiphanies while traveling, as they are able to view their problems from a more detached view.
+              </p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+          <!-- /.card -->
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              <h3>
+              To stay away from Drugs. Come to Hong Kong and visit us!</h3>
+            </div>
+            <div class="card-body"><p><h3>Travel Tips: Where to Travel?</h3> </p>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/qYBytb_vHHU?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Keung Keung on 4/8/16</small>
+              <hr>
+              <p><h4>
+            Hong Kong Travel Guide | What To Do, Where To Go What To Eat</h4>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/3vlZK1Zaeu0?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Tiffany Kwan on 1/12/15</small>
+              <hr>
+              <p>
+          <h3>MY FIRST TRIP TO HONG KONG</h3>
+<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/yrWQpykUQJc?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Hing Kin on 31/7/15</small>
+              <hr>
+              <a href="#" class="btn btn-success">Leave Your Recommendations Here</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

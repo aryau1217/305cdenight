@@ -1,0 +1,283 @@
+<html>
+<!-- <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head> -->
+    <head>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>text_socialnetwork</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+  </head>
+<style>
+  p.dotted {border-style: dotted;}
+  </style>
+<!-- <script>
+$(document).ready(function()
+{   
+    mylogin=localStorage.getItem("mylogin");
+	
+	if(mylogin==""){
+	alert("Please login first");
+	return;
+	}
+  
+  $("button").click(function()
+	{
+		
+		if(this.id=="fav1"){
+		  favtext=$("#fav1text").html();
+		}else if(this.id=="fav2"){
+		  favtext=$("#fav2text").html();
+		}
+		
+	
+        
+          var mydata="user="+mylogin+"&fav="+favtext;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/addfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   $("#readfav").click(function()
+	{
+		alert("Reading....");
+		
+        
+          var mydata="user="+mylogin;
+        
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/readfavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			    //  var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+				  alert(stringObj.length);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].user + "<div id='"+stringObj[i]._id+"' class='removebutton'>Remove</a>";
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].favourite;
+					  document.getElementsByClassName("removelink")[i].innerHTML = stringObj[i]._id;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+   
+   
+   
+   $(".removelink").click(function(e)
+	{
+		
+		alert($(this).closest('tr').children('td.removelink').text());
+		
+		removeid=$(this).closest('tr').children('td.removelink').text();
+		
+	
+        
+          var mydata="removeid="+removeid;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/removefavourlist",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			
+   });
+   
+}); -->
+</script>
+<body style="background-color:Lavender;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">NO DRUGS.COM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/socialnetwork">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/doctorlist">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+<!--               <li class="nav-item">
+              <a class="nav-link" href="/Signup">Signup</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/Login">Signup/Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+          <br>
+          <br>
+          <h1 class="my-4">About us</h1>
+          <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i>Go</button>
+          <div class="list-group">
+            <br><a href="#" class="list-group-item active">Understanding Drug Use</a>
+            <a href="#" class="list-group-item">Addiction</a>
+            <a href="#" class="list-group-item">Affecting Brain</a>
+            <img src="effectonbrain.jpg" alt="effectonbrain" width="250" height="250">
+            <img src="nodrugs.jpg" alt="nodrugs" width="250" height="250">
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+          <br>
+          <br>
+          <div class="card mt-4">
+            
+            <div class="card-body">
+              <img src="aboutus.jpg" alt="aboutus" width="300" height="150" align="right">
+              <br>
+              <h3 class="card-title">We are NO DRUGS.COM</h3>
+              <h6>We are a group of people over the world. Many workplaces sponsor Employee Assistance Programs that offer short-term counseling and/or assistance in linking employees with drug or alcohol problems to local treatment resources, including peer support/recovery groups. In addition, therapeutic work environments that provide employment for drug-abusing individuals who can demonstrate abstinence have been shown not only to promote a continued drug-free lifestyle but also to improve job skills, punctuality, and other behaviors necessary for active employment throughout life. Urine testing facilities, trained personnel, and workplace monitors are needed to implement this type of treatment.<br>Yes. Addiction—or compulsive drug use despite harmful consequences—is characterized by an inability to stop using a drug; failure to meet work, social, or family obligations; and, sometimes (depending on the drug), tolerance and withdrawal. The latter reflect physical dependence in which the body adapts to the drug, requiring more of it to achieve a certain effect (tolerance) and eliciting drug-specific physical or mental symptoms if drug use is abruptly ceased (withdrawal). Physical  dependence can happen with the chronic use of many drugs—including many prescription drugs, even if taken as instructed. Thus, physical dependence in and of itself does not constitute addiction, but it often accompanies addiction. This distinction can be difficult to discern, particularly with prescribed pain medications, for which the need for increasing dosages can represent tolerance or a worsening underlying problem, as opposed to the beginning of abuse or addiction.</h6>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+          <!-- /.card -->
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              <h3>
+              Why we are here? let's watch below videos.</h3>
+            </div>
+            <div class="card-body"><p><h3>How do drugs affect the brain?</h3> </p>
+             <div style="position:relative;height:0;padding-bottom:56.23%"><iframe src="https://www.youtube.com/embed/8qK0hxuXOC8?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Chan Siu Ming on 4/5/17</small>
+              <hr>
+              <p><h3>
+            Mechanism of Drug Addiction in the Brain, Animation.</h3>
+            <div style="position:relative;height:0;padding-bottom:56.23%"><iframe src="https://www.youtube.com/embed/NxHNxmJv2bQ?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Kelly Kwan on 25/12/16</small>
+              <hr>
+              <p>
+          <h3>Learn how to say no to drugs! A video for kids</h3>
+<div style="position:relative;height:0;padding-bottom:56.23%"><iframe src="https://www.youtube.com/embed/FN78E_iaITE?ecver=2" style="position:absolute;width:100%;height:100%;left:0" width="640" height="360" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+              <small class="text-muted">Posted by Lee Ka Fai on 12/8/16</small>
+              <hr>
+              <a href="#" class="btn btn-success">Leave Your Experience Here</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>

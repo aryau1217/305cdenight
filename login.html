@@ -1,0 +1,278 @@
+<html>
+<!-- <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css "href="css/web.css"/>
+</head> -->
+      <head>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/28074258-F0B7-3246-8D89-C07C17EC1F2D/main.js" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/D2F1CE71C70C-98D8-6423-7B0F-85247082/abn/main.css"/><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>login</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/shop-item.css" rel="stylesheet">
+
+  </head>
+ <style>
+div.mask {
+    position: relative;
+    left: 30px;
+    border: 3px solid #73AD21;
+}
+  </style>
+
+<script>
+$(document).ready(function()
+{   
+
+  
+  $("#btnsignup").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/Signup",
+          
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert(resultReturn);
+						//alert(JSON.stringify(resultReturn));
+			      var _stringObj = JSON.stringify(resultReturn);
+			      var stringObj = JSON.parse(resultReturn);
+			      for(i = 0; i < stringObj.length; i++)
+            {
+					    var num = i + 1;
+					    document.getElementsByClassName("tabnum")[i].innerHTML = num;
+					    document.getElementsByClassName("tabname")[i].innerHTML = stringObj[i].texttitle;
+				      document.getElementsByClassName("tablink")[i].innerHTML = stringObj[i].command;
+				     }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+   
+    $("#btnlogin").click(function()
+	{
+		//alert("callnow");
+		var tempSearch;
+		//tempSearch = document.forms["search"]["searchkey"].value;
+		if(tempSearch == "")
+			{
+				alert("Please fill the field.");
+			}
+		else
+			{
+         var login=$("#login").val();
+         var pass=$("#mypass").val();
+        
+          var mydata="user="+login+"&pass="+pass;
+        alert(mydata);
+				$.ajax(
+				{
+					/*url: "http://port-9000.305server-idm4smb32469.codeanyapp.com/Login", */
+					url: "http://port-9000.305cde-aryau1217842216.codeanyapp.com/Login",
+					type: 'POST',
+					data: mydata,
+					success: function(resultReturn)
+					{ 
+						//alert("search success");
+           alert("login result="+resultReturn);
+					
+					if(resultReturn=="Login Success"){
+					  localStorage.setItem("mylogin",login);
+					  alert(localStorage.getItem("mylogin"));
+					    window.location.href="/favlistpage";
+					 }
+					},error: function (xhr, textStatus, errorThrown) 
+					{
+						alert("search failed");
+						console.log(textStatus);
+            alert(xhr.responseText);
+      		}
+				});
+			}
+   });
+});
+</script>
+<body style="background-color:PapayaWhip;">
+  
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">NO DRUGS.COM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="socialnetwork">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/doctorlist">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-3">
+<br>
+<br>
+<br>
+          <h3 class="my-4">Signup Or Login</h3>
+          <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i>Go</button>
+          <div class="list-group">
+            <br><a href="#" class="list-group-item active">Understanding Drug Use</a>
+            <a href="#" class="list-group-item">Addiction</a>
+            <a href="#" class="list-group-item">Affecting Brain</a>
+            <br><img src="effectonbrain.jpg" alt="effectonbrain" width="250" height="250">
+            <img src="nodrugs.jpg" alt="nodrugs" width="250" height="250">
+          </div>
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9">
+<br>
+<br>
+<br>
+              <h3 class="card-title">Sign Up For Free! Say No To Drugs Together!</h3>
+              <h4>Or Login Here</h4>
+              
+<div style="background-color:LightGoldenRodYellow ">
+<div class="mask">
+  <br><a href="/favlistpage">See the helpers without login</a> 
+  <br><form id="formID" name="search">
+			<br><li><b>Username:</b> <input type="text" id="login"/></li>
+  <br><li><b>Password:</b> <input type="password" id="mypass"/></li>
+		</form>
+  	<li><button id="btnsignup" class="button button1">
+    	Signup
+  	</button></li>
+  <br>
+<li><button id="btnlogin" class="button button1">
+    	Login
+  	</button></li>
+<br><li><a href="/fake1">Forgot password?</a></li>
+    <br><li><a href="/logout">Back</a></li>
+<!--     <br><a href="/fake2">fake2</a> -->
+    <br>
+  </div>
+  
+  <table id="mytable">
+      <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+          <tr>
+          <td class = "tabnum"></td>
+           <td class = "tabname"></td>
+           <td class = "tablink"></td>
+          </tr>
+  </table>
+                <div class="card mt-4">
+            <img src="drug002.jpg" alt="drug002" width="500" height="240">
+            <div class="card-body">
+              
+              <p class="card-text">Long-term use also causes changes in other brain chemical systems and circuits as well, <br>affecting functions that include:
+<br><b>-learning
+<br>-judgment
+<br>-decision-making
+<br>-stress
+<br>-memory
+<br>-behavior</b></p>
+              <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+              4.0 stars
+            </div>
+          </div>
+          <!-- /.card -->
+
+          <div class="card card-outline-secondary my-4">
+            <div class="card-header">
+              <h3>
+              Drugs addict experience sharing</h3>
+            </div>
+            <div class="card-body">
+              <p><h3>
+              Why do drug-addicted persons keep using drugs?</h3><br>Nearly all addicted individuals believe at the outset that they can stop using drugs on their own, and most try to stop without treatment. Although some people are successful, many attempts result in failure to achieve long-term abstinence. Research has shown that long-term drug abuse results in changes in the brain that persist long after a person stops using drugs. These drug-induced changes in brain function can have many behavioral consequences, including an inability to exert control over the impulse to use drugs despite adverse consequences—the defining characteristic of addiction.</p>
+              <small class="text-muted">Posted by Tommy Tsang on 3/2/17</small>
+              <hr>
+              <p><h3>
+            What helps people stay in treatment?</h3><br>Because successful outcomes often depend on a person’s staying in treatment long enough to reap its full benefits, strategies for keeping people in treatment are critical. Whether a patient stays in treatment depends on factors associated with both the individual and the program. Individual factors related to engagement and retention typically include motivation to change drug-using behavior; degree of support from family and friends; and, frequently,  pressure from the criminal justice system, child protection services, employers, or family. Within a treatment program, successful clinicians can establish a positive, therapeutic relationship with their patients. The clinician should ensure that a treatment plan is developed cooperatively with the person seeking treatment, that the plan is followed, and that treatment expectations are clearly understood. Medical, psychiatric, and social services should also be available.</p>
+              <small class="text-muted">Posted by Kelly Kwan on 25/12/16</small>
+              <hr>
+              <p><h3>
+          <h3>How can family and friends make a difference in the life of someone needing treatment?</h3>
+          <br>Family and friends can play critical roles in motivating individuals with drug problems to enter and stay in treatment. Family therapy can also be important, especially for adolescents. Involvement of a family member or significant other in an individual's treatment program can strengthen and extend treatment benefits.</p>
+              <small class="text-muted">Posted by Lee Ka Fai on 12/8/16</small>
+              <hr>
+              <a href="#" class="btn btn-success">Leave Your Experience Here</a>
+            </div>
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+
+    </div>
+    <!-- /.container -->
+
+    <img src="apple.jpg">
+  <br>
+    <div class = "style3"><b>Article List</b>
+  <br>
+    <a href="/hklawprivacy">Personal Data (Privacy) Law in Hong Kong</a>
+  <br>
+    <a href="/protectdata">How to protect yourself in the social networks</a>
+  <br>
+    <a href="/socialnetwork">Something you should remember when using social network</a>
+  </div>
+    </div>
+</body>
+
+</html>
